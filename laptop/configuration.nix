@@ -72,7 +72,7 @@ users.users.michael = {
   };
   i18n.supportedLocales = [ "en_US.UTF-8/UTF-8" ];
   
-  environment.systemPackages = with pkgs; [ libreoffice duckstation pcsx2 discord r2modman steamguard-cli libheif ff2mpv mpv lutris node2nix ];
+  environment.systemPackages = with pkgs; [ libreoffice duckstation pcsx2 discord r2modman steamguard-cli libheif ff2mpv mpv ];
 
   # Networking
   networking = {
@@ -105,9 +105,11 @@ users.users.michael = {
     services.blueman.enable = true;
 
   # GPU Acceleration
-  hardware.opengl.enable = true;
-  hardware.opengl.extraPackages = with pkgs; [ intel-compute-runtime intel-media-driver ];
-  hardware.opengl.driSupport = true;
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [ intel-compute-runtime intel-media-driver ];
+    driSupport = true;
+    driSupport32Bit = true;
 
   services.syncthing = {
       enable = true;
