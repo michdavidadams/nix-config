@@ -110,6 +110,7 @@ users.users.michael = {
     extraPackages = with pkgs; [ intel-compute-runtime intel-media-driver ];
     driSupport = true;
     driSupport32Bit = true;
+  };
 
   services.syncthing = {
       enable = true;
