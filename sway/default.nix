@@ -81,7 +81,7 @@ in
           border = 4;
           commands = [
             { command = "floating enable, sticky enable, resize set 25 ppt 40 ppt, border pixel 4, blur enable"; criteria.app_id = "music"; }
-            { command = "floating enable, sticky enable, resize set 25 ppt 40 ppt, border pixel 4, blur enable"; criteria.app_id = "fzf-launcher"; }
+            { command = "floating enable, sticky enable, resize set 25 ppt 40 ppt, border pixel 4, blur enable"; criteria.app_id = "launcher"; }
             { command = "blur enable"; criteria = { app_id = "foot"; }; }
           ];
           titlebar = false;
