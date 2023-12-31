@@ -3,6 +3,7 @@
 {
   imports = [ ./hardware-configuration.nix ../common.nix ];
   hardware.enableAllFirmware = true;
+  services.fstrim.enable = true;
 
 users.users.michael = {
     isNormalUser = true;
