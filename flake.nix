@@ -44,7 +44,7 @@
                 {
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;
-                  home-manager.users.michael.imports = [ ./home.nix ./sway ./pkgs/firefox.nix ];
+                  home-manager.users.michael.imports = [ ./home.nix ./sway ./pkgs/firefox.nix ./pkgs/chromium.nix ];
                   home-manager.users.michael.home.stateVersion = "23.11";
                   home-manager.extraSpecialArgs = { inherit firefox-addons stylix; };
                 }
