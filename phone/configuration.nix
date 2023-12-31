@@ -23,7 +23,7 @@ environment.packages = with pkgs; [
         programs.zsh.initExtra = ''
         mpdscribble
         '';
-        users.michael.home.stateVersion = "23.05";
+        home.stateVersion = "23.05";
       };
       useGlobalPkgs = true;
       useUserPackages = true;
