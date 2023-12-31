@@ -1,7 +1,7 @@
 { lib, config, pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ ./hardware-configuration.nix ../common.nix ];
   hardware.enableAllFirmware = true;
 
 users.users.michael = {
