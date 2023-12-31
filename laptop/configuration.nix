@@ -73,7 +73,7 @@ users.users.michael = {
   };
   i18n.supportedLocales = [ "en_US.UTF-8/UTF-8" ];
   
-  environment.systemPackages = with pkgs; [ libreoffice duckstation pcsx2 discord r2modman steamguard-cli libheif ff2mpv mpv gimp-with-plugins ];
+  environment.systemPackages = with pkgs; [ libreoffice duckstation pcsx2 discord r2modman steamguard-cli libheif ff2mpv mpv gimp-with-plugins inkscape ];
 
   # Networking
   networking = {
