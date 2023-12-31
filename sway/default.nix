@@ -87,7 +87,7 @@ in
           titlebar = false;
         };
         floating = {
-          criteria = [ { title = "Steam Settings"; } { title = "Friends List" }; ];
+          criteria = [ { title = "Steam Settings"; } { title = "Friends List"; } ];
         };
       };
       extraConfig = ''
