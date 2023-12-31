@@ -11,11 +11,10 @@ in
       enable = true;
       enableAutosuggestions = true;
         enableCompletion = true;
-        enableVteIntegration = true;
+        enableVteIntegration = false;
         autocd = true;
         shellAliases = {
           mountcd = "sudo sg_raw /dev/sr0 EA 00 00 00 00 00 01";
-          t = "todo.sh -d ~/nix/todo/todo.cfg";
           h = "himalaya";
         };
         dirHashes = {
