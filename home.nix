@@ -11,7 +11,6 @@ in
       enable = true;
       enableAutosuggestions = true;
         enableCompletion = true;
-        enableVteIntegration = false;
         autocd = true;
         shellAliases = {
           mountcd = "sudo sg_raw /dev/sr0 EA 00 00 00 00 00 01";
@@ -25,14 +24,9 @@ in
         initExtra = ''
         source ${pkgs.spaceship-prompt}/lib/spaceship-prompt/spaceship.zsh
         SPACESHIP_TIME_SHOW=false
+
+        source ${pkgs.zsh-nix-shell}/share/zsh-nix-shell/nix-shell.plugin.zsh
         '';
-        plugins = [
-          {
-            name = "spaceship-prompt";
-            file = "spaceship.zsh";
-            src = pkgs.spaceship-prompt;
-          }
-        ];
       };
       programs.fzf = {
         enable = true;
@@ -43,7 +37,7 @@ in
 
       home.packages = with pkgs; [
         todo-txt-cli
-        fd unzip fzf-mpd spaceship-prompt
+        fd unzip fzf-mpd spaceship-prompt zsh-nix-shell
     ];
 
     programs.gpg = {
