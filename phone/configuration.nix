@@ -19,7 +19,7 @@ environment.packages = with pkgs; [
 
     home-manager = {
       config = {
-        imports = [ ../home.nix ];
+        imports = [ ../home.nix ../nixvim ];
         programs.zsh.initExtra = ''
         mpdscribble
         '';
