@@ -38,7 +38,13 @@ in
       home.packages = with pkgs; [
         todo-txt-cli
         fd unzip fzf-mpd spaceship-prompt zsh-nix-shell
-    ];
+      ];
+      xdg.configFile."todo.cfg".text = ''
+      export TODO_DIR="${config.xdg.configHome}/todo.cfg"
+      export TODO_FILE="$TODO_DIR/todo.txt"
+      export DONE_FILE="$TODO_DIR/done.txt"
+      export REPORT_FILE="$TODO_DIR/report.txt"
+      '';
 
     programs.gpg = {
         enable = true;
