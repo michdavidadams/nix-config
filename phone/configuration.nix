@@ -1,4 +1,4 @@
-{ config, lib, pkgs, nixvim, ... }:
+{ config, lib, pkgs, nixvim, stylix, ... }:
 {
 environment.packages = with pkgs; [
     curl mpc-cli mpdscribble
@@ -19,7 +19,7 @@ environment.packages = with pkgs; [
 
     home-manager = {
       config = {
-        imports = [ ../home.nix nixvim.homeManagerModules.nixvim ../nixvim ];
+        imports = [ ../home.nix nixvim.homeManagerModules.nixvim ../nixvim stylix.homeManagerModules.stylix ../stylix ];
         programs.zsh.initExtra = ''
         mpdscribble
         '';
