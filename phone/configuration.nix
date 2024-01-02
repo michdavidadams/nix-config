@@ -20,6 +20,10 @@ environment.packages = with pkgs; [
     home-manager = {
       config = {
         imports = [ ../home.nix nixvim.homeManagerModules.nixvim ../nixvim stylix.homeManagerModules.stylix ../stylix ];
+        stylix = {
+          autoEnable = false;
+          targets.nixvim.enable = true;
+        };
         programs.zsh.initExtra = ''
         mpdscribble
         '';
