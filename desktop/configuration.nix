@@ -74,11 +74,7 @@
   ];
 
   # Smart home
-  systemd.user.units = {
-    "lights-off" = {
-
-    };
-  };
+  systemd.shutdown."lights-off.sh" = ./lights-off.sh;
   security.acme = {
     acceptTerms = true;
     defaults.email = "me@michdavidadams.com";
