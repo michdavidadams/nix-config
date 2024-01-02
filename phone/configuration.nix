@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, nixvim, ... }:
 {
 environment.packages = with pkgs; [
     curl mpc-cli mpdscribble
