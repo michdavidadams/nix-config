@@ -4,10 +4,26 @@ let
   fzf-launcher = pkgs.writeShellScriptBin "fzf-launcher" ''
   j4-dmenu-desktop --dmenu=fzf --no-generic --no-exec | xargs swaymsg exec --
   '';
+  fzf-power-menu pkgs.writeShellScriptBin "fzf-power-menu" ''
+  case $(printf " lock\n shutdown\n reboot\n" | fzf) in
+  " lock")
+    swaylock -f
+    ;;
+  " shutdown")
+    systemctl shutdown
+    ;;
+  " reboot")
+    reboot
+    ;;
+  *)
+    echo "Fix this script..........embarrassing....."
+    ;;
+esac
+  '';
 
 in
 {
-    home.packages = with pkgs; [ wl-clipboard wdisplays glib xdg-utils grim slurp j4-dmenu-desktop libnotify ytfzf pam_gnupg mpc-cli fzf-launcher jq papirus-icon-theme ];
+    home.packages = with pkgs; [ wl-clipboard wdisplays glib xdg-utils grim slurp j4-dmenu-desktop libnotify ytfzf pam_gnupg mpc-cli fzf-launcher fzf-power-menu jq papirus-icon-theme ];
 
     stylix = {
       opacity = {
@@ -71,6 +87,7 @@ in
           "${modifier}+Shift+q" = "kill";
           "${modifier}+d" = "exec foot -a launcher -e fzf-launcher";
           "${modifier}+m" = "exec foot -a music -e fzf-mpd";
+          "${modifier}+Shift+e" = "exec foot -a fzf-power-menu -e fzf-power-menu"
         };
         menu = "j4-dmenu-desktop --dmenu=fzf";
         modifier = "Mod4";
@@ -82,6 +99,7 @@ in
           commands = [
             { command = "floating enable, sticky enable, resize set 25 ppt 40 ppt, border pixel 4, blur enable"; criteria.app_id = "music"; }
             { command = "floating enable, sticky enable, resize set 25 ppt 40 ppt, border pixel 4, blur enable"; criteria.app_id = "launcher"; }
+            { command = "floating enable, sticky enable, resize set 25 ppt 40 ppt, border pixel 4, blur enable"; criteria.app_id = "power-menu"; }
             { command = "blur enable"; criteria = { app_id = "foot"; }; }
           ];
           titlebar = false;
@@ -110,7 +128,6 @@ in
       export _JAVA_AWT_WM_NONREPARENTING=1
       export MOZ_ENABLE_WAYLAND=1
       '';
-      swaynag.enable = true;
       systemd.enable = true;
       wrapperFeatures.gtk = true;
       wrapperFeatures.base = true;
@@ -143,7 +160,7 @@ in
             "mpd" = {
               format = "{stateIcon} {albumArtist} - {title}";
               format-stopped = "";
-              format-paused = "{stateIcon}";
+              format-paused = "{stateIcon} {songPosition}/{queueLength}";
               state-icons = {
                 "paused" = "";
                 "playing" = "";
