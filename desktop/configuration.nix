@@ -1,5 +1,10 @@
 { config, pkgs, lib, ... }:
+let
+  "lights-off" = pkgs.writeShellScriptBin "lights-off.sh" ''
+  exec mosquitto_pub -t 'zigbee2mqtt/living_room/set' -m '{ "state": "OFF" }'
+  '';
 
+in
 {
   imports = [ ./hardware-configuration.nix ../common.nix ];
   hardware.facetimehd.enable = true;
@@ -70,11 +75,21 @@
   i18n.supportedLocales = [ "en_US.UTF-8/UTF-8" ];
 
       environment.systemPackages = with pkgs; [
-     mosquitto
+     mosquitto lights-off
   ];
 
   # Smart home
-  systemd.shutdown."lights-off.sh" = ./lights-off.sh;
+  systemd.services = {
+    "lights-off" = {
+      description = "Turn off lights before shutdown";
+      after = [ "final.target" ];
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = "${pkgs.lights-off}/bin/lights-off.sh";
+      };
+      wantedBy = [ "final.target" ];
+    };
+  };
   security.acme = {
     acceptTerms = true;
     defaults.email = "me@michdavidadams.com";

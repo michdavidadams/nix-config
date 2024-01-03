@@ -5,7 +5,7 @@ case $(printf " lock\n shutdown\n reboot\n" | fzf) in
     swaylock -f
     ;;
   " shutdown")
-    shutdown
+    systemctl shutdown
     ;;
   " reboot")
     reboot
