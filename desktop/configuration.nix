@@ -87,7 +87,7 @@ in
         Type = "oneshot";
         ExecStart = "${pkgs.lights-off}/bin/lights-off.sh";
       };
-      wantedBy = [ "final.target" ];
+      wantedBy = [ "final.target" "mosquitto.service" "zigbee2mqtt.service" ];
     };
   };
   security.acme = {
