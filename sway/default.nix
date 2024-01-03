@@ -4,7 +4,7 @@ let
   fzf-launcher = pkgs.writeShellScriptBin "fzf-launcher" ''
   j4-dmenu-desktop --dmenu=fzf --no-generic --no-exec | xargs swaymsg exec --
   '';
-  fzf-power-menu pkgs.writeShellScriptBin "fzf-power-menu" ''
+  fzf-power-menu = pkgs.writeShellScriptBin "fzf-power-menu" ''
   case $(printf " lock\n shutdown\n reboot\n" | fzf) in
   " lock")
     swaylock -f
