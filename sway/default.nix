@@ -10,7 +10,7 @@ let
     swaylock -f
     ;;
   " shutdown")
-    systemctl shutdown
+    shutdown
     ;;
   " reboot")
     reboot
