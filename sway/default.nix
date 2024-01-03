@@ -87,7 +87,7 @@ in
           "${modifier}+Shift+q" = "kill";
           "${modifier}+d" = "exec foot -a launcher -e fzf-launcher";
           "${modifier}+m" = "exec foot -a music -e fzf-mpd";
-          "${modifier}+Shift+e" = "exec foot -a fzf-power-menu -e fzf-power-menu"
+          "${modifier}+Shift+e" = "exec foot -a fzf-power-menu -e fzf-power-menu";
         };
         menu = "j4-dmenu-desktop --dmenu=fzf";
         modifier = "Mod4";

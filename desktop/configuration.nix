@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-  "lights-off" = pkgs.writeShellScriptBin "lights-off.sh" ''
+  lights-off = ''
   exec mosquitto_pub -t 'zigbee2mqtt/living_room/set' -m '{ "state": "OFF" }'
   '';
 
@@ -75,21 +75,10 @@ in
   i18n.supportedLocales = [ "en_US.UTF-8/UTF-8" ];
 
       environment.systemPackages = with pkgs; [
-     mosquitto lights-off
+     mosquitto sunwait
   ];
 
   # Smart home
-  systemd.services = {
-    "lights-off" = {
-      description = "Turn off lights before shutdown";
-      after = [ "final.target" ];
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStart = "${pkgs.lights-off}/bin/lights-off.sh";
-      };
-      wantedBy = [ "final.target" "mosquitto.service" "zigbee2mqtt.service" ];
-    };
-  };
   security.acme = {
     acceptTerms = true;
     defaults.email = "me@michdavidadams.com";
@@ -141,6 +130,41 @@ in
           };
       };
     };
+    systemd.services = {
+      lights-on = {
+        description = "Turn on lights after boot";
+        after = [ "sway-session.target" ];
+        wantedBy = [ "multi-user.target" ];
+        path = [ pkgs.mosquitto pkgs.bash ];
+        script = builtins.readFile ./lights-on.sh;
+        serviceConfig.Type = "oneshot";
+      };
+      lights-off = {
+        description = "Turn off lights before shutdown";
+        after = [ "zigbee2mqtt.service" ];
+        wantedBy = [ "multi-user.target" ];
+        path = [ pkgs.mosquitto pkgs.bash ];
+        script = builtins.readFile ./lights-off.sh;
+        serviceConfig.Type = "oneshot";
+      };
+      sunset = {
+        description = "Change lights to evening scene if sunset";
+        wantedBy = [ "multi-user.target" ];
+        path = [ pkgs.mosquitto pkgs.bash pkgs.sunwait ];
+        script = builtins.readFile ./sunset.sh;
+        serviceConfig.Type = "oneshot";
+      };
+    };
+    systemd.timers = {
+      sunset = {
+        description = "Periodically run sunset service";
+        wantedBy = [ "multi-user.target" ];
+        timerConfig = {
+          OnUnitActiveSec = "1800";
+          Unit = "sunset.service";
+        };
+      };
+    };
 
     services.syncthing = { enable = true; user = "michael"; dataDir = "/home/michael"; configDir = "/home/michael/.config/syncthing"; };
 
@@ -152,7 +176,7 @@ in
                 passwordFile = "/home/michael/.keys/lastfm_password";
                 username = "michdavidadams";
             };
-        };
+          };
       };
 
   # Networking
