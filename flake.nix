@@ -24,9 +24,13 @@
         url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
         inputs.nixpkgs.follows = "nixpkgs";
       };
+      fzf-nix = {
+        url = "github:mrene/fzf-nix";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, nix-on-droid, home-manager, hosts, nixvim, stylix, firefox-addons, ... }: {
+  outputs = inputs@{ self, nixpkgs, nix-on-droid, home-manager, hosts, nixvim, stylix, firefox-addons, fzf-nix, ... }: {
 
       nixOnDroidConfigurations.phone = nix-on-droid.lib.nixOnDroidConfiguration {
         modules = [ ./phone/configuration.nix ];
