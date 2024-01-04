@@ -209,7 +209,7 @@ in
     programs.zathura.enable = true;
       programs.obs-studio = {
     enable = true;
-    packages = with pkgs.obs-studio-plugins; [ obs-wlrobs obs-source-record obs-pipewire-audio-capture obs-vkcapture ];
+    plugins = with pkgs.obs-studio-plugins; [ wlrobs obs-source-record obs-pipewire-audio-capture obs-vkcapture ];
   };
 
     services.gammastep = {
