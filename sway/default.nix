@@ -2,7 +2,7 @@
 let
   modifier = "Mod4";
   fzf-launcher = pkgs.writeScriptBin "fzf-launcher" (builtins.readFile ../pkgs/fzf/launcher.sh);
-  fzf-power-menu = pkgs.writeScriptBin "fzf-power-menu" (builtins.readFile = ../pkgs/fzf/power-menu.sh);
+  fzf-power-menu = pkgs.writeScriptBin "fzf-power-menu" (builtins.readFile ../pkgs/fzf/power-menu.sh);
 
 in
 {
