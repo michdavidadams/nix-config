@@ -57,8 +57,8 @@ in
     enable = true;
     configurationLimit = 5;
   };
-  boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.loader.efi.canTouchEfiVariables = true;
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
