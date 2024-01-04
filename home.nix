@@ -32,7 +32,8 @@
 
       home.packages = with pkgs; [
         todo-txt-cli
-        fd unzip spaceship-prompt zsh-nix-shell lsix 
+        fd unzip spaceship-prompt zsh-nix-shell lsix
+        mpc-cli
       ];
       xdg.configFile."todo.cfg".text = ''
       export TODO_DIR="${config.xdg.configHome}/todo.cfg"

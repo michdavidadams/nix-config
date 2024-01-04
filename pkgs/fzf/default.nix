@@ -6,6 +6,7 @@ let
 
 in
   {
+    stylix.targets.fzf.enable = true;
   home.packages = with pkgs; [ fzf-mpd fzf-pass ];
   programs.fzf = {
     enable = true;

@@ -5,35 +5,19 @@ let
   fzf-power-menu = pkgs.writeScriptBin "fzf-power-menu" (builtins.readFile ../pkgs/fzf/power-menu.sh);
 
 in
-{
-    home.packages = with pkgs; [ wl-clipboard wdisplays glib xdg-utils grim slurp j4-dmenu-desktop libnotify ytfzf pam_gnupg mpc-cli fzf-launcher fzf-power-menu jq papirus-icon-theme ];
+  {
+    imports = [ ./waybar ./foot ./mako ./gammastep ];
+    home.packages = with pkgs; [ wl-clipboard wdisplays glib xdg-utils grim slurp j4-dmenu-desktop ytfzf pam_gnupg fzf-launcher fzf-power-menu ];
 
     stylix = {
       opacity = {
         applications = 0.9;
         desktop = 0.3;
         popups = 0.7;
-        terminal = 0.9;
       };
       targets = {
-        fuzzel.enable = true;
-        fzf.enable = true;
         gtk.enable = true;
-        mako.enable = true;
-        nixvim = {
-          enable = true;
-          transparent_bg.main = true;
-          transparent_bg.sign_column = true;
-        };
         sway.enable = true;
-        swaylock.enable = true;
-        waybar = {
-          enable = true;
-          enableCenterBackColors = true;
-          enableLeftBackColors = true;
-          enableRightBackColors = true;
-        };
-        xresources.enable = true;
         zathura.enable = true;
       };
     };
@@ -117,77 +101,6 @@ in
       xwayland = true;
     };
 
-    programs.waybar = {
-      enable = true;
-      settings = [
-        {
-            layer = "top";
-            position = "top";
-            margin = "8";
-            spacing = "6";
-            modules-left = [ "sway/workspaces" "tray" ];
-            modules-center = [ "sway/window" ];
-            modules-right = [ "mpd" "wireplumber" "backlight" "network" "bluetooth" "battery" "clock" ];
-            "backlight" = {
-              format = "{icon} {percent}%";
-              format-icons = [ "" "" "" "" "" "" "" "" "" "" "" "" "" ];
-            };
-            "bluetooth" = {
-              format = "";
-              format-disabled = "";
-              format-connected = " {num_connections}";
-            };
-            "clock" = {
-              format = " {:%a, %b %Od, %I:%M}";
-            };
-            "mpd" = {
-              format = "{stateIcon} {albumArtist} - {title}";
-              format-stopped = "";
-              format-paused = "{stateIcon} {songPosition}/{queueLength}";
-              state-icons = {
-                "paused" = "";
-                "playing" = "";
-              };
-            };
-            "network" = {
-              format-ethernet = "";
-              format-wifi = "";
-              format-disconnected = "";
-            };
-            "tray" = {
-              icon-size = 20;
-              show-passive-icons = true;
-              spacing = 10;
-            };
-            "wireplumber" = {
-              format = "{icon} {volume}%";
-              format-icons = [ "" "" "" ];
-            };
-          }
-        ];
-        systemd.enable = true;
-    };
-    programs.swaylock = {
-      enable = true;
-      settings = {
-        indicator-idle-visible = false;
-        show-failed-attempts = false;
-      };
-    };
-    services.swayidle = {
-      enable = true;
-      events = [
-        { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock -fF"; }
-        { event = "lock"; command = "lock"; }
-      ];
-      timeouts = [
-        { timeout = 2700; command = "${pkgs.swaylock}/bin/swaylock -fF"; }
-      ];
-    };
-    programs.foot = {
-      enable = true;
-    };
-
     programs.pistol.enable = true;
     programs.zathura.enable = true;
       programs.obs-studio = {
@@ -195,21 +108,7 @@ in
     plugins = with pkgs.obs-studio-plugins; [ wlrobs obs-source-record obs-pipewire-audio-capture obs-vkcapture ];
   };
 
-    services.gammastep = {
-      enable = true;
-      latitude = "34.2";
-      longitude = "-85.1";
-      provider = "geoclue2";
-      temperature.day = 5000;
-      temperature.night = 3000;
-    };
-    services.mako = {
-      enable = true;
-      anchor = "top-right";
-    };
     services.cliphist.enable = true;
     services.udiskie.enable = true;
-
-    services.kdeconnect.enable = true;
 
 }

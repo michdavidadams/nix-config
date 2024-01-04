@@ -1,4 +1,11 @@
-{ pkgs, config, nixvim, ... }: {
+{ pkgs, config, lib, nixvim, ... }: {
+
+  stylix.targets.nixvim = {
+    enable = true;
+    transparent_bg.main = true;
+    transparent_bg.sign_column = true;
+  };
+
   programs.nixvim = {
     enable = true;
     viAlias = true;
