@@ -1,25 +1,8 @@
 { config, pkgs, lib, ... }:
 let
   modifier = "Mod4";
-  fzf-launcher = pkgs.writeShellScriptBin "fzf-launcher" ''
-  j4-dmenu-desktop --dmenu=fzf --no-generic --no-exec | xargs swaymsg exec --
-  '';
-  fzf-power-menu = pkgs.writeShellScriptBin "fzf-power-menu" ''
-  case $(printf " lock\n shutdown\n reboot\n" | fzf) in
-  " lock")
-    swaylock -f
-    ;;
-  " shutdown")
-    shutdown
-    ;;
-  " reboot")
-    reboot
-    ;;
-  *)
-    echo "Fix this script..........embarrassing....."
-    ;;
-esac
-  '';
+  fzf-launcher = pkgs.writeScriptBin "fzf-launcher" (builtins.readFile ../pkgs/fzf/launcher.sh);
+  fzf-power-menu = pkgs.writeScriptBin "fzf-power-menu" (builtins.readFile = ../pkgs/fzf/power-menu.sh);
 
 in
 {
