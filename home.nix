@@ -1,11 +1,7 @@
 { pkgs, config, lib, ... }:
-let
-  fzf-mpd = pkgs.writeShellScriptBin "fzf-mpd" ''
-  mpc clear && mpc ls | fzf | mpc add -- && mpc play
-  '';
 
-in
 {
+  imports = [ ./pkgs/fzf ];
   xdg.enable = true;
     programs.zsh = {
       enable = true;
@@ -28,16 +24,15 @@ in
         source ${pkgs.zsh-nix-shell}/share/zsh-nix-shell/nix-shell.plugin.zsh
         '';
       };
-      programs.fzf = {
+
+      programs.pistol = {
         enable = true;
-        enableZshIntegration = true;
-        changeDirWidgetOptions = [ "--preview 'tree -C {} | head -200'" ];
-        defaultCommand = "fd --type f";
+
       };
 
       home.packages = with pkgs; [
         todo-txt-cli
-        fd unzip fzf-mpd spaceship-prompt zsh-nix-shell
+        fd unzip spaceship-prompt zsh-nix-shell lsix 
       ];
       xdg.configFile."todo.cfg".text = ''
       export TODO_DIR="${config.xdg.configHome}/todo.cfg"
