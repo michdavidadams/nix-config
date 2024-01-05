@@ -59,7 +59,7 @@
                     blockGambling = true;
                   };
                 }
-                nixvim.homeManagerModules.nixvim
+                nixvim.nixosModules.nixvim
                 stylix.nixosModules.stylix
               ];
           };
