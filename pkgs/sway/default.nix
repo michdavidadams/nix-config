@@ -6,7 +6,7 @@ let
 
 in
   {
-    imports = [ ./browsers ./waybar ./foot ./mako ./gammastep ];
+    imports = [ ./browsers ./waybar ./foot ./mako ./gammastep ./swayidle ./swaylock ];
     home.packages = with pkgs; [ wl-clipboard wdisplays glib xdg-utils grim slurp j4-dmenu-desktop ytfzf pam_gnupg fzf-launcher fzf-power-menu ];
 
     stylix = {

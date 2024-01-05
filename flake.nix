@@ -42,14 +42,13 @@
               system = "x86_64-linux";
               modules = [
                 ./machines/desktop/configuration.nix
-                ./pkgs/nixvim
                 home-manager.nixosModules.home-manager
                 {
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;
                   home-manager.users.michael.imports = [ ./home.nix ./pkgs/sway ./pkgs/nixvim ];
                   home-manager.users.michael.home.stateVersion = "23.11";
-                  home-manager.extraSpecialArgs = { inherit firefox-addons stylix nixvim; };
+                  home-manager.extraSpecialArgs = { inherit firefox-addons stylix; };
                 }
                 hosts.nixosModule {
                   networking.stevenBlackHosts = {
@@ -58,7 +57,7 @@
                     blockGambling = true;
                   };
                 }
-                nixvim.nixosModules.nixvim
+                nixvim.homeManagerModules.nixvim
                 stylix.nixosModules.stylix
               ];
           };
@@ -66,14 +65,13 @@
             system = "x86_64-linux";
               modules = [
                 ./machines/laptop/configuration.nix
-                ./pkgs/nixvim
                 home-manager.nixosModules.home-manager
                 {
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;
                   home-manager.users.michael.imports = [ ./home.nix ./pkgs/sway ./pkgs/nixvim ./pkgs/beets.nix ];
                   home-manager.users.michael.home.stateVersion = "23.05";
-                  home-manager.extraSpecialArgs = { inherit firefox-addons stylix nixvim; };
+                  home-manager.extraSpecialArgs = { inherit firefox-addons stylix; };
                 }
                 hosts.nixosModule {
                   networking.stevenBlackHosts = {
@@ -82,7 +80,7 @@
                     blockGambling = true;
                   };
                 }
-                nixvim.nixosModules.nixvim
+                nixvim.homeManagerModules.nixvim
                 stylix.nixosModules.stylix
               ];
             };
