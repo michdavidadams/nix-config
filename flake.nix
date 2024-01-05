@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nix-init.url = "github:nix-community/nix-init";
     nix-on-droid = {
         url = "github:nix-community/nix-on-droid/release-23.05";
         inputs = {
