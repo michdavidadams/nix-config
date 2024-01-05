@@ -1,8 +1,8 @@
 { config, pkgs, lib, ... }:
 let
   modifier = "Mod4";
-  fzf-launcher = pkgs.writeScriptBin "fzf-launcher" (builtins.readFile ../pkgs/fzf/launcher.sh);
-  fzf-power-menu = pkgs.writeScriptBin "fzf-power-menu" (builtins.readFile ../pkgs/fzf/power-menu.sh);
+  fzf-launcher = pkgs.writeScriptBin "fzf-launcher" (builtins.readFile ../fzf/launcher.sh);
+  fzf-power-menu = pkgs.writeScriptBin "fzf-power-menu" (builtins.readFile ../fzf/power-menu.sh);
 
 in
   {
