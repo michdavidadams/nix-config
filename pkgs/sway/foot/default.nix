@@ -16,7 +16,7 @@
       };
       url = {
         launch = "xdg-open \${url}";
-        protocols = [ "https" "http" "file" ];
+        protocols = "https, http, file";
       };
     };
   };
