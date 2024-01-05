@@ -10,7 +10,7 @@ in
   hardware.facetimehd.enable = true;
   hardware.enableAllFirmware = true;
 
-    users.users.michael.extraGroups = [ "mosquitto" ]
+    users.users.michael.extraGroups = [ "mosquitto" ];
 
     services.pipewire = {
         enable = true;
