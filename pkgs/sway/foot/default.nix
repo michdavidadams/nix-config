@@ -5,7 +5,7 @@
     targets.foot.enable = true;
   };
 
-  home.packages = with pkgs; [ xdg-open ];
+  home.packages = with pkgs; [ xdg-utils ];
 
   programs.foot = {
     enable = true;
