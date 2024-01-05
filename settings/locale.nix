@@ -16,7 +16,7 @@
     };
   };
 
-  time.timezone = "America/New_York";
+  time.timeZone = "America/New_York";
 
   location = {
     latitude = 34.2;
