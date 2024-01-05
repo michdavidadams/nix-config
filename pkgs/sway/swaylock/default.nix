@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }
+{ config, lib, pkgs, ... }:
 {
   stylix.targets.swaylock.enable = true;
     programs.swaylock = {
