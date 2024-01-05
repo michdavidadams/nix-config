@@ -33,7 +33,7 @@
   outputs = inputs@{ self, nixpkgs, nix-on-droid, home-manager, hosts, nixvim, stylix, firefox-addons, fzf-nix, ... }: {
 
       nixOnDroidConfigurations.phone = nix-on-droid.lib.nixOnDroidConfiguration {
-        modules = [ ./phone/configuration.nix ];
+        modules = [ ./machines/phone/configuration.nix ];
         extraSpecialArgs = { inherit nixpkgs home-manager nixvim stylix; };
       };
 
@@ -65,7 +65,7 @@
           laptop = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
               modules = [
-                ./laptop/configuration.nix
+                ./machines/laptop/configuration.nix
                 ./pkgs/nixvim
                 home-manager.nixosModules.home-manager
                 {
