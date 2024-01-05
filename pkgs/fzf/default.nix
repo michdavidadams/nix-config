@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 let
-  fzf-mpd = pkgs.writeScriptBin "fzf-mpd" (builtins.readFile ./mpd.sh);
-  
+  fzf-mpd = pkgs.writeScriptBin "fzf-mpd" (builtins.readFile ./mpd.sh); 
   fzf-pass = pkgs.writeScriptBin "fzf-pass" (builtins.readFile ./pass.sh);
 
 in

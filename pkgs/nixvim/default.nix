@@ -1,4 +1,4 @@
-{ pkgs, config, lib, nixvim, ... }: {
+{ pkgs, config, lib, ... }: {
 
   stylix.targets.nixvim = {
     enable = true;

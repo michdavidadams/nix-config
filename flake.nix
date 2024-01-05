@@ -65,6 +65,7 @@
             system = "x86_64-linux";
               modules = [
                 ./machines/laptop/configuration.nix
+                ./pkgs/nixvim
                 home-manager.nixosModules.home-manager
                 {
                   home-manager.useGlobalPkgs = true;
@@ -80,7 +81,7 @@
                     blockGambling = true;
                   };
                 }
-                nixvim.homeManagerModules.nixvim
+                nixvim.nixosModules.nixvim
                 stylix.nixosModules.stylix
               ];
             };
