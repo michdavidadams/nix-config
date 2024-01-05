@@ -1,7 +1,7 @@
 { lib, config, pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix .../settings ];
+  imports = [ ./hardware-configuration.nix ];
   hardware.enableAllFirmware = true;
   services.fstrim.enable = true;
   services.fwupd.enable = true;

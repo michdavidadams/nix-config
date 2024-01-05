@@ -42,6 +42,8 @@
               system = "x86_64-linux";
               modules = [
                 ./machines/desktop/configuration.nix
+                ./settings
+                ./pkgs/nixvim
                 home-manager.nixosModules.home-manager
                 {
                   home-manager.useGlobalPkgs = true;
@@ -66,6 +68,7 @@
               modules = [
                 ./machines/laptop/configuration.nix
                 ./pkgs/nixvim
+                ./settings
                 home-manager.nixosModules.home-manager
                 {
                   home-manager.useGlobalPkgs = true;

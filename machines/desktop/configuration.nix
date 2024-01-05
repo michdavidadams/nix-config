@@ -6,7 +6,7 @@ let
 
 in
 {
-  imports = [ ./hardware-configuration.nix .../settings ];
+  imports = [ ./hardware-configuration.nix ];
   hardware.facetimehd.enable = true;
   hardware.enableAllFirmware = true;
 
