@@ -10,11 +10,10 @@
         MiSky.psk = "@PASS_MISKY@";
         Adams.psk = "@PASS_ADAMS@";
       };
+    };
 
-      firewall = {
-        enable = true;
-
-      };
+    firewall = {
+      enable = true;
     };
   };
 }
