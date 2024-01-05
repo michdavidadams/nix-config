@@ -5,7 +5,7 @@
     targets.foot.enable = true;
   };
 
-  home.packages = with pkgs; [ xdg-open ];
+  home.packages = with pkgs; [ xdg-utils ];
 
   programs.foot = {
     enable = true;
@@ -16,7 +16,7 @@
       };
       url = {
         launch = "xdg-open \${url}";
-        protocols = [ "https" "http" "file" ];
+        protocols = "https, http, file";
       };
     };
   };
