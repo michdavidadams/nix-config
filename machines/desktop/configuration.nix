@@ -6,23 +6,11 @@ let
 
 in
 {
-  imports = [ ./hardware-configuration.nix ../common.nix ];
+  imports = [ ./hardware-configuration.nix .../settings ];
   hardware.facetimehd.enable = true;
   hardware.enableAllFirmware = true;
 
-    users.users.michael = {
-    isNormalUser = true;
-    home = "/home/michael";
-    name = "michael";
-    description = "Michael Adams";
-    extraGroups = [ "wheel" "audio" "video" "mosquitto" ];
-    shell = pkgs.zsh;
-  };
-
-    programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
-  security.rtkit.enable = true;
-    security.pam.loginLimits = [ { domain = "@users"; item = "rtprio"; type = "-"; value = 1; } ];
+    users.users.michael.extraGroups = [ "mosquitto" ]
 
     services.pipewire = {
         enable = true;
@@ -32,47 +20,7 @@ in
     services.dbus.enable = true;
     programs.light.enable = true;
     programs.dconf.enable = true;
-    security.polkit.enable = true;
-    security.pam.services.swaylock = {};
-    security.pam.services.login.gnupg = {
-      enable = true;
-      storeOnly = true;
-    };
     hardware.opengl.enable = true;
-    xdg.portal = {
-      enable = true;
-      wlr.enable = true;
-      configPackages = [ pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gtk ];
-    };
-
-      xdg.sounds.enable = true;
-      time.timeZone = "America/New_York";
-      location = {
-      provider = "geoclue2";
-      latitude = 34.2;
-      longitude = -85.1;
-    };
-  # Bootloader
-  boot.loader.systemd-boot = {
-    enable = true;
-    configurationLimit = 5;
-  };
-
-  boot.loader.efi.canTouchEfiVariables = true;
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
-  i18n.supportedLocales = [ "en_US.UTF-8/UTF-8" ];
 
       environment.systemPackages = with pkgs; [
      mosquitto sunwait
@@ -180,23 +128,7 @@ in
       };
 
   # Networking
-  networking = {
-    hostName = "michael-desktop";
-    domain = "michdavidadams.com";
-    nameservers = [ "9.9.9.9" "149.112.112.112" "2620:fe::fe" "2620:fe::9" ];
-    wireless = {
-        enable = true;
-        scanOnLowSignal = false;
-        environmentFile = "/home/michael/.keys/wireless.env";
-        networks.MiSky.psk = "@PASS_MISKY@";
-    };
-    nat.enableIPv6 = true;
-    useDHCP = true;
-      firewall = {
-        enable = true;
-        allowedTCPPorts = [ 1883 8080 ];
-      };
-  };
+  networking.hostName = "michael-desktop";
 
     system.stateVersion = "23.11";
 }

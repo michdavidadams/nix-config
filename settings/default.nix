@@ -1,5 +1,6 @@
-{ pkgs, config, lib, ... }:
+{ config, lib, pkgs, ... }:
 {
+  imports = [ ./user.nix ./zsh.nix ./network.nix ./bluetooth.nix ./security.nix ./locale.nix ./boot.nix ./xdg.nix ./stylix ];
   nix = {
       settings = {
       accept-flake-config = true;
