@@ -30,7 +30,7 @@
       };
   };
 
-  outputs = inputs@{ self, nixpkgs, nix-on-droid, home-manager, hosts, nixvim, stylix, firefox-addons, fzf-nix, ... }: {
+  outputs = inputs@{ nixpkgs, nix-on-droid, home-manager, hosts, nixvim, stylix, firefox-addons, fzf-nix, ... }: {
 
       nixOnDroidConfigurations.phone = nix-on-droid.lib.nixOnDroidConfiguration {
         modules = [ ./machines/phone/configuration.nix ];
@@ -69,7 +69,6 @@
                 ./machines/laptop/configuration.nix
                 ./pkgs/nixvim
                 ./settings
-                ./pkgs
                 home-manager.nixosModules.home-manager
                 {
                   home-manager.useGlobalPkgs = true;
