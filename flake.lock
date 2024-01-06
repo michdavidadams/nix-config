@@ -501,11 +501,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1704562419,
-        "narHash": "sha256-tEiQkwD5rLs9Ryccqm0WEMZqVPwJRraz9YEdkEv3+H4=",
+        "lastModified": 1704567172,
+        "narHash": "sha256-/2ZafeJRGIjCcn7fiCpWW1KjtcQZ/GkKQw9ejFqIST8=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "a40a0c679c814841af8ddf3a09f02e218942533f",
+        "rev": "a1f8b437b34d5acd31faa8eb530f2319018ded00",
         "type": "github"
       },
       "original": {
