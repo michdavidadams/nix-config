@@ -69,7 +69,7 @@
                 }
                 nixvim.nixosModules.nixvim
                 stylix.nixosModules.stylix
-                hosts.nixosModule = {
+                hosts.nixosModule {
                   networking.stevenBlackHosts = {
                     enable = true;
                     blockFakenews = true;
