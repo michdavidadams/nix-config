@@ -3,6 +3,9 @@
   imports = [ ./user.nix ./zsh.nix ./network.nix ./bluetooth.nix ./security.nix ./locale.nix ./boot.nix ./xdg.nix ./stylix ];
   environment.systemPackages = with pkgs; [ nix-init ];
   nix = {
+
+    nixPath = ["nixpkgs=${pkgs.path}"];
+
       settings = {
       accept-flake-config = true;
       auto-optimise-store = true;
