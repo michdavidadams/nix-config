@@ -390,7 +390,7 @@
       "locked": {
         "lastModified": 1704194953,
         "narHash": "sha256-RtDKd8Mynhe5CFnVT8s0/0yqtWFMM9LmCzXv/YKxnq4=",
-        "owner": "nixos",
+        "owner": "NixOS",
         "repo": "nixpkgs",
         "rev": "bd645e8668ec6612439a9ee7e71f7eac4099d4f6",
         "type": "github"
@@ -457,11 +457,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1704495913,
-        "narHash": "sha256-5IITsUF5mTv0NspboMupJGVj3CUtbCA8+NLDubtcs6g=",
+        "lastModified": 1704553134,
+        "narHash": "sha256-kFBkmlXRtE79X7mTg5f/JRxFlD5m+URttiQvIpnb5fA=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "f16f767f465c0b247449063f773575ecdcfa8310",
+        "rev": "ef3b3f3bbb64bfcb79477034f2b7bb3f2b12ffd3",
         "type": "github"
       },
       "original": {
