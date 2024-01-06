@@ -75,7 +75,7 @@
                     blockFakenews = true;
                     blockGambling = true;
                   };
-                };
+                }
               ];
             };
       };
