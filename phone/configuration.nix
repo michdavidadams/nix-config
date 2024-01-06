@@ -1,7 +1,7 @@
 { config, lib, pkgs, nixvim, stylix, ... }:
 {
 environment.packages = with pkgs; [
-    curl mpc-cli mpdscribble
+    curl mpdscribble
     mosquitto
     (nerdfonts.override { fonts = [ "Lilex" ]; })
   ];
@@ -23,6 +23,7 @@ environment.packages = with pkgs; [
         stylix = {
           autoEnable = false;
           targets.nixvim.enable = true;
+          targets.fzf.enable = true;
         };
         programs.zsh.initExtra = ''
         mpdscribble

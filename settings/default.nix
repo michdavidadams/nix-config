@@ -22,4 +22,5 @@
         permittedInsecurePackages = [ "electron-25.9.0" ]; # Discord
 
       };
+
 }

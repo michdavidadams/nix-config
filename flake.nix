@@ -69,6 +69,13 @@
                 }
                 nixvim.nixosModules.nixvim
                 stylix.nixosModules.stylix
+                hosts.nixosModule = {
+                  networking.stevenBlackHosts = {
+                    enable = true;
+                    blockFakenews = true;
+                    blockGambling = true;
+                  };
+                };
               ];
             };
       };
