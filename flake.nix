@@ -27,7 +27,7 @@
       fzf-nix = {
         url = "github:mrene/fzf-nix";
         inputs.nixpkgs.follows = "nixpkgs";
-    };
+      };
   };
 
   outputs = inputs@{ self, nixpkgs, nix-on-droid, home-manager, hosts, nixvim, stylix, firefox-addons, fzf-nix, ... }: {
@@ -69,6 +69,7 @@
                 ./machines/laptop/configuration.nix
                 ./pkgs/nixvim
                 ./settings
+                ./pkgs
                 home-manager.nixosModules.home-manager
                 {
                   home-manager.useGlobalPkgs = true;
