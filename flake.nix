@@ -49,13 +49,6 @@
                   home-manager.users.michael.home.stateVersion = "23.11";
                   home-manager.extraSpecialArgs = { inherit firefox-addons stylix; };
                 }
-                hosts.nixosModule {
-                  networking.stevenBlackHosts = {
-                    enable = true;
-                    blockFakenews = true;
-                    blockGambling = true;
-                  };
-                }
                 nixvim.nixosModules.nixvim
                 stylix.nixosModules.stylix
               ];
@@ -73,13 +66,6 @@
                   home-manager.users.michael.imports = [ ./home.nix ./pkgs/sway ./pkgs/beets.nix ./pkgs/browsers ];
                   home-manager.users.michael.home.stateVersion = "23.05";
                   home-manager.extraSpecialArgs = { inherit firefox-addons stylix; };
-                }
-                hosts.nixosModule {
-                  networking.stevenBlackHosts = {
-                    enable = true;
-                    blockFakenews = true;
-                    blockGambling = true;
-                  };
                 }
                 nixvim.nixosModules.nixvim
                 stylix.nixosModules.stylix

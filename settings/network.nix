@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 {
   networking = {
     domain = "michdavidadams.com";
@@ -16,4 +16,11 @@
       enable = true;
     };
   };
+
+  inputs.hosts.nixosModule.networking.stevenBlackHosts = {
+    enable = true;
+    blockFakenews = true;
+    blockGambling = true;
+  }
+  
 }
