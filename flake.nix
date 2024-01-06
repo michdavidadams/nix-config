@@ -24,13 +24,10 @@
         url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
         inputs.nixpkgs.follows = "nixpkgs";
       };
-      fzf-nix = {
-        url = "github:mrene/fzf-nix";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
+
   };
 
-  outputs = inputs@{ nixpkgs, nix-on-droid, home-manager, hosts, nixvim, stylix, firefox-addons, fzf-nix, ... }: {
+  outputs = inputs@{ nixpkgs, nix-on-droid, home-manager, hosts, nixvim, stylix, firefox-addons, ... }: {
 
       nixOnDroidConfigurations.phone = nix-on-droid.lib.nixOnDroidConfiguration {
         modules = [ ./machines/phone/configuration.nix ];
@@ -50,7 +47,7 @@
                   home-manager.useUserPackages = true;
                   home-manager.users.michael.imports = [ ./home.nix ./pkgs/sway ];
                   home-manager.users.michael.home.stateVersion = "23.11";
-                  home-manager.extraSpecialArgs = { inherit firefox-addons stylix nixvim; };
+                  home-manager.extraSpecialArgs = { inherit firefox-addons stylix; };
                 }
                 hosts.nixosModule {
                   networking.stevenBlackHosts = {
@@ -75,7 +72,7 @@
                   home-manager.useUserPackages = true;
                   home-manager.users.michael.imports = [ ./home.nix ./pkgs/sway ./pkgs/beets.nix ];
                   home-manager.users.michael.home.stateVersion = "23.05";
-                  home-manager.extraSpecialArgs = { inherit firefox-addons stylix nixvim; };
+                  home-manager.extraSpecialArgs = { inherit firefox-addons stylix; };
                 }
                 hosts.nixosModule {
                   networking.stevenBlackHosts = {
