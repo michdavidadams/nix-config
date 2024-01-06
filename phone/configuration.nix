@@ -19,7 +19,7 @@ environment.packages = with pkgs; [
 
     home-manager = {
       config = {
-        imports = [ ../home.nix nixvim.homeManagerModules.nixvim ../nixvim stylix.homeManagerModules.stylix ../stylix ];
+        imports = [ ../home.nix nixvim.homeManagerModules.nixvim ../pkgs/nixvim stylix.homeManagerModules.stylix ../settings/stylix ];
         stylix = {
           autoEnable = false;
           targets.nixvim.enable = true;
