@@ -22,6 +22,8 @@
         SPACESHIP_TIME_SHOW=false
 
         source ${pkgs.zsh-nix-shell}/share/zsh-nix-shell/nix-shell.plugin.zsh
+
+        source ${pkgs.zsh-fzf-tab}/fzf-tab.plugin.zsh
         '';
       };
 
@@ -32,7 +34,7 @@
 
       home.packages = with pkgs; [
         todo-txt-cli
-        fd unzip spaceship-prompt zsh-nix-shell lsix
+        fd unzip spaceship-prompt zsh-nix-shell zsh-fzf-tab lsix
         mpc-cli
       ];
       xdg.configFile."todo.cfg".text = ''
