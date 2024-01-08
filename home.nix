@@ -17,13 +17,14 @@
           vids = "$HOME/Videos";
           dl = "$HOME/Downloads";
         };
+        historySubstringSearch.enable = true;
         initExtra = ''
+        source ${pkgs.zsh-fzf-tab}/fzf-tab.plugin.zsh
+
         source ${pkgs.spaceship-prompt}/lib/spaceship-prompt/spaceship.zsh
         SPACESHIP_TIME_SHOW=false
 
         source ${pkgs.zsh-nix-shell}/share/zsh-nix-shell/nix-shell.plugin.zsh
-
-        source ${pkgs.zsh-fzf-tab}/fzf-tab.plugin.zsh
         '';
       };
 
