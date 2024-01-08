@@ -1,10 +1,5 @@
 { config, pkgs, lib, ... }:
-let
-  lights-off = ''
-  exec mosquitto_pub -t 'zigbee2mqtt/living_room/set' -m '{ "state": "OFF" }'
-  '';
 
-in
 {
   imports = [ ./hardware-configuration.nix ];
   hardware.facetimehd.enable = true;
@@ -23,7 +18,7 @@ in
     hardware.opengl.enable = true;
 
       environment.systemPackages = with pkgs; [
-     mosquitto sunwait
+        mosquitto sunwait libnotify
   ];
 
   # Smart home

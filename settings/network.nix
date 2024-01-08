@@ -14,6 +14,10 @@
 
     firewall = {
       enable = true;
+      allowedTCPPorts = [
+        23045 # Default port for a2ln-server
+      ];
+      
     };
   };
 
