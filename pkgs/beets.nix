@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ abcde sg3_utils ];
+  home.packages = with pkgs; [ sg3_utils ];
   programs.beets = {
     enable = true;
     package = pkgs.beets-unstable;
