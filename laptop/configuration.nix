@@ -53,6 +53,9 @@
             extraLibraries = p: with p; [ atk ];
         };
       };
+      services.archisteamfarm = {
+
+      };
 
     # audio, music, mpd
     services.mpdscribble = {

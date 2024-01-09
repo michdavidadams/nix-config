@@ -29,14 +29,24 @@
         '';
       };
 
-      programs.pistol = {
-        enable = true;
-
+      programs.lf = {
+        previewer = {
+          keybinding = "i";
+          source = "${pkgs.ctpv}/bin/ctpv";
+        };
+        extraConfig = ''
+        &${pkgs.ctpv}/bin/ctpv -s $id
+        cmd on-quit %${pkgs.ctpv}/bin/ctpv -e $id
+        set cleaner ${pkgs.ctpv}/bin/ctpvclear
+        '';
       };
+      programs.pistol.enable = true;
+      programs.less.enable = true;
+      programs.lesspipe.enable = true;
 
       home.packages = with pkgs; [
         todo-txt-cli
-        fd unzip spaceship-prompt zsh-nix-shell zsh-fzf-tab lsix
+        fd unzip spaceship-prompt zsh-nix-shell zsh-fzf-tab lsix chafa ctpv
         mpc-cli
       ];
       xdg.configFile."todo.cfg".text = ''
@@ -199,4 +209,5 @@
     enable = true;
 
   };
+
 }
