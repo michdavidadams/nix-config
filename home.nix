@@ -20,7 +20,7 @@
         };
         historySubstringSearch.enable = true;
         initExtra = ''
-        source ${pkgs.zsh-fzf-tab}/fzf-tab.plugin.zsh
+        source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
 
         source ${pkgs.spaceship-prompt}/lib/spaceship-prompt/spaceship.zsh
         SPACESHIP_TIME_SHOW=false
@@ -30,6 +30,7 @@
       };
 
       programs.lf = {
+        enable = true;
         previewer = {
           keybinding = "i";
           source = "${pkgs.ctpv}/bin/ctpv";

@@ -19,7 +19,7 @@
     programs.light.enable = true;
     programs.dconf.enable = true;
  
-  environment.systemPackages = with pkgs; [ libreoffice duckstation pcsx2 discord r2modman steamguard-cli libheif ff2mpv mpv gimp-with-plugins lutgen ffmpeg ];
+  environment.systemPackages = with pkgs; [ libreoffice duckstation pcsx2 discord r2modman steamguard-cli libheif ff2mpv mpv gimp-with-plugins lutgen ffmpeg localsend ];
 
   # Networking
   networking.hostName = "michael-laptop";
@@ -37,7 +37,11 @@
       user = "michael";
       dataDir = "/home/michael";
       configDir = "/home/michael/.config/syncthing";
-  };
+    };
+
+    # Android
+    programs.adb.enable = true;
+    users.users.michael.extraGroups = [ "adbusers" ];
 
     # Gaming
     programs.java.enable = true;
